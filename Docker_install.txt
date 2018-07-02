@@ -1,0 +1,16 @@
+# How to install Docker :
+   $ sudo apt update
+
+#If you find any problem in the above command you will have to run an installation script provided by Docker.
+   $ sudo apt-get install wget
+   $ wget -qO- https://get.docker.com/ | sh
+
+#If you want to be able to run Docker containers as your user, not only as root, you should add yourself to the group called docker using the following command.
+#(To access without sudo)
+   $ sudo groupadd docker
+   $ sudo usermod -aG docker $USER
+Then you’ll want to log out and then log back in for the changes to take effect.
+
+
+
+
