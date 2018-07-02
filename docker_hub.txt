@@ -1,0 +1,19 @@
+Push your images to docker hub :
+
+    (1)Create a account in dockerhub (hub.docker.com). And remember your username and password.
+
+    (2)Now go to terminal and run the command “docker login”  And then enter your username and password to login.
+
+    (3)Then tag your image to a new name such that it should be in the format like  {username}/{imagename:tag}
+         $ docker tag  your_imagename:tag   your_username/imagename:tag
+
+     (4)Now push your image to docker hub.
+         $ docker push  your_username/imagename:tag
+
+     (5) Now the docker hub has your image.
+     (6) You can also push your same image with different tag.So that it will push into same image repository with different tag. 
+         And then the repository contains different images with same imagename and different tags.
+         You call pull the image by differentiating the tag.
+
+     (7) Now the person who needs to pull that image can pull with the below Command.
+             $ docker  pull  <usernameofimageholder>/<imagename:tag>
