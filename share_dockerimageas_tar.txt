@@ -1,0 +1,15 @@
+Share image via .tar file :
+
+         (i) Sometimes I want to save a docker image and then use it on another computer
+             without going through the hassle of uploading it to dockerhub or private registry.
+             
+         (ii) Docker images aren’t really stored as files that you can just grab and move to
+                another computer .But you can save and then load the images like this:
+          
+               If you want to save the image as a tar archive, using docker save -o:
+                 $ docker save -o  abcd.tar  <image_name:tag>
+                 
+         (iii) Then copy the adcd.tar file into another computer and load there :
+                 $ docker load abcd.tar
+                 
+         (iv)Run “ docker images ” . It will show up in your docker images list .
