@@ -1,6 +1,7 @@
 How to create a docker image :
 
 Docker gives you the capability to create your own Docker images, and it can be done with the help of Docker Files. A Docker File is a simple text file with instructions on how to build your images.
+
 Create a file called Docker File and edit that by writing appropriate commands to build your image. Please note that the name of the file has to be "Dockerfile" with "D" as capital.
 
 Ex: Creating a docker image for a django application
