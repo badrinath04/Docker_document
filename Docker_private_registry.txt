@@ -1,0 +1,38 @@
+Push your images to private (local) repository :
+      
+       You might have the need to have your own private repositories. You may not 
+       want to host the repositories on Docker Hub. For this, there is a repository
+       container itself from Docker. 
+      
+       (i)Use the Docker run command to download the private registry. This can be done using the following command.
+               $ docker pull registry:2
+          ‘registry’ is the container managed by Docker which can be used to host private Repositories.
+
+       (ii) And it is better to mount a volume which keeps a backup of all your pushed Images. 
+            So that if the registry container is stopped it will restore all your pushed images when ever it restarts.
+                $ mkdir registry_backup
+                $ cd registry_backup
+                  
+            and  run the registry image along with mounting.
+                $   docker run -d -p  9999:5000 -v  $(pwd)/:/var/lib/registry registry:2
+            Let’s do a ‘docker ps’ to see that the registry container is indeed running.Now your private registry setup is done.
+
+
+       (iii)Now let’s tag one of our existing images (let’s take centos) so that we can push it to our local repository.
+              $ docker tag centos  localhost:9999/centos
+
+       (iv)Now let’s use the Docker push command to push the repository to our private Repository.
+              $ docker push localhost:9999/centos 
+
+       (v)You can share your private registry image to others also.To do that go to the file  /etc/docker/daemon.json and add this line.
+            
+            {
+		           "insecure-registries" : [ "<your_IP_address>:9999" ]
+             }
+
+        And in the system from where you need to pull this private image also add the 
+        above line in /etc/docker/daemon.json  in its system.(The ipaddress which is 
+        mentioning here should be the image holder’s  ipaddress.)
+
+         (vi) After that you can pull that private image with the following command.
+               $ docker pull <ipaddressofimageholder>:9999/centos
